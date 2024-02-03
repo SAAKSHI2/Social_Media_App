@@ -1,0 +1,98 @@
+.posts{
+         /* background-color: aquamarine; */
+         display: flex;
+         flex-direction: column;
+         gap:50px;
+         justify-items: center;
+         align-items: center;
+         padding: 50px;
+        
+        
+        
+    .post{
+
+        -webkit-box-shadow: 2px 2px 55px 8px rgba(140,135,140,1);
+        -moz-box-shadow: 2px 2px 55px 8px rgba(140,135,140,1);
+        box-shadow: 2px 2px 25px 8px rgba(140,135,140,1);
+        border: 1px solid lightgrey;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px;
+        border-radius: 20px;
+       
+       
+
+        .user{
+            /* border: 1px solid rgb(203, 98, 98); */
+            /* gap:20px; */
+            display: flex;
+            /* margin: 10px; */
+            border-radius: 10px;
+            /* align-items: center; */
+            justify-content: space-between;
+            .userInfo{
+                display: flex;
+                gap:20px;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+
+                }
+                .details{
+                    display: flex;
+                    flex-direction: column;
+                    gap:5px;
+                    
+                    .name{
+                        font-weight: 700;
+                        color: rgb(68, 67, 67);
+                        font-size: larger;
+                        display: block;
+                    }
+                    .date{
+                       font-size: 13px;
+                       color: rgb(68, 67, 67);
+                    }
+                }
+            }
+        }
+
+        .content{
+            margin: 20px 0px;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            img{
+                width: 40vw;
+                max-height: 450px;
+                object-fit: cover;
+                margin-top: 20px;
+
+            }
+            p{
+                margin: 0px;
+                align-self: flex-start;
+                
+            }
+        }
+
+        .likesComments{
+            display: flex;
+            align-items: center;
+            gap:20px;
+
+            .liked{
+                display: flex;
+                align-items: center;
+                gap:10px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+
+        }
+    }
+}

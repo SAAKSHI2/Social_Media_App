@@ -1,0 +1,124 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    height: 50px;
+    position: sticky;
+    top:0;
+    background-color: white;
+    border-bottom: 1px solid lightgrey;
+    z-index: 999;
+    .left{
+        /* background-color: aqua; */
+        display: flex;
+        /* justify-content: space-around; */
+        align-items: center;
+        justify-content: space-evenly;
+        /* gap:300px; */
+        width: 25%;
+
+
+        .logo{
+            display: flex;
+            align-items: center;
+            gap:10px;
+            span{
+                font-weight: bold;
+                font-size: 25px;
+                color:darkblue;
+                /* margin-bottom: 20px; */
+                align-items:center;
+            }
+    
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+    
+
+        }
+       
+
+      
+       
+    }
+
+    .center{
+        display: flex;
+        /* justify-content: space-around; */
+        align-items: center;
+        justify-content: center;
+        
+        gap:50px;
+        .search{
+            display: flex;
+            align-items: center;
+            gap:10px;
+            border: 2px solid lightgrey;
+            border-radius: 5px;
+            padding: 2px;
+            /* margin: 10px; */
+
+            input{
+
+                border:none;
+                font-size: 15px;
+                padding: 10px;
+                width: 600px;
+
+            }
+        }
+    }
+
+    .right{
+        display: flex;
+        /* background-color: blue; */
+        align-items: center;
+    
+        /* justify-content: center; */
+        justify-content: center;
+        /* gap:300px; */
+        width: 10%;
+
+        .user{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            span{
+                font-weight: bold;
+                font-size: 20px;
+                color:darkblue;
+                /* margin-bottom: 20px; */
+                align-items:center;
+            }
+        }
+
+        button{
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            
+
+        }
+        button:hover{
+            background-color: #c82333;
+
+        }
+    }
+}
