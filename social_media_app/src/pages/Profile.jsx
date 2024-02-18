@@ -6,6 +6,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/authContext";
 import Update from "../components/Update";
+
+
+
 const Profile = ()=>{
 
     const userId = useLocation().pathname.split("/")[2];
@@ -20,7 +23,7 @@ const Profile = ()=>{
     
     const getUserInfo =async ()=>{
         try{
-            const res = await axios.get("http://localhost:3001/api/users/find/"+userId[1],{
+            const res = await axios.get(process.env.REACT_APP_BACKEND_URL+"api/users/find/"+userId[1],{
                 withCredentials:true
             });
           
@@ -38,7 +41,7 @@ const Profile = ()=>{
 
         try{
             setPosts([]);
-            const res = await axios.get("http://localhost:3001/api/posts/"+userId[1],{
+            const res = await axios.get(process.env.REACT_APP_BACKEND_URL+"api/posts/"+userId[1],{
                 withCredentials:true
             });
             setPosts(()=>res.data);
@@ -51,7 +54,7 @@ const Profile = ()=>{
     const handleClick = async(follow)=>{
         if(follow){
             try{
-                const res = await axios.post("http://localhost:3001/api/friends/follow",{user_id1:currentUser.user_id,user_id2:parseInt(userId[1])},{
+                const res = await axios.post(process.env.REACT_APP_BACKEND_URL+"api/friends/follow",{user_id1:currentUser.user_id,user_id2:parseInt(userId[1])},{
                     withCredentials:true
                 });
                 const updatedArray = friends.map((element) => element + parseInt(userId[1]));
@@ -63,7 +66,7 @@ const Profile = ()=>{
             }
         }else{
             try{
-                const res = await axios.post("http://localhost:3001/api/friends/unFollow",{user_id1:currentUser.user_id,user_id2:parseInt(userId[1])},{
+                const res = await axios.post(process.env.REACT_APP_BACKEND_URL+"api/friends/unFollow",{user_id1:currentUser.user_id,user_id2:parseInt(userId[1])},{
                     withCredentials:true
                 });
                 const updatedArray = friends.filter((element) => element !== parseInt(userId[1]));

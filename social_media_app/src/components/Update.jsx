@@ -3,6 +3,7 @@ import "../css/update.css";
 import axios from "axios";
 import { AuthContext } from "../context/authContext";
 
+
 const Update=({setOpenUpdate,user,setUserInfo,setPosts})=>{
 
     const [userDetails,setUserDetails] = useState();
@@ -32,7 +33,7 @@ const Update=({setOpenUpdate,user,setUserInfo,setPosts})=>{
             form.append("location",location);
             form.append("email",email);
 
-            const uploadPost = await axios.put("http://localhost:3001/api/users/",form,{
+            const uploadPost = await axios.put(process.env.REACT_APP_BACKEND_URL+"api/users/",form,{
                 withCredentials:true
             }); 
             const data = uploadPost.data;
@@ -42,7 +43,7 @@ const Update=({setOpenUpdate,user,setUserInfo,setPosts})=>{
             setUserInfo(data);
 
             setPosts([]);
-            const res = await axios.get("http://localhost:3001/api/posts/"+user.user_id,{
+            const res = await axios.get(process.env.REACT_APP_BACKEND_URL+"api/posts/"+user.user_id,{
                 withCredentials:true
             });
             setPosts(()=>res.data);            

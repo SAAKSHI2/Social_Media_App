@@ -2,6 +2,8 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 export const AuthContext = createContext();
 
 export const AuthContextProvider=({children})=>{
@@ -9,11 +11,14 @@ export const AuthContextProvider=({children})=>{
     const [friends,setFriends] = useState([]);
     // const navigate = useNavigate();
 
+    console.log(process.env.REACT_APP_BACKEND_URL);
 
     const login=async(inputs)=>{
-        const res = await axios.post("http://localhost:3001/api/auth/login",inputs,{
+        const res = await axios.post(process.env.REACT_APP_BACKEND_URL+"api/auth/login",inputs,{
             withCredentials:true
         });
+        console.log("cookie created");
+        console.log(res);
         const profile_picture = res.data.profile_picture!=null?res.data.profile_picture:"/images/user.png";
          setCurrentUser(({...res.data,profile_picture:profile_picture}));       
 
@@ -21,7 +26,7 @@ export const AuthContextProvider=({children})=>{
 
     const refetch=async()=>{
      
-        const res = await axios.get("http://localhost:3001/api/users/refetch",{
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL+"api/users/refetch",{
             withCredentials:true
         });
        
@@ -36,7 +41,7 @@ export const AuthContextProvider=({children})=>{
         const getFriends=async()=>{
             try{
                 if(currentUser.user_id){
-                    const res = await axios.get("http://localhost:3001/api/friends/"+currentUser.user_id);
+                    const res = await axios.get(process.env.REACT_APP_BACKEND_URL+"api/friends/"+currentUser.user_id);
                     setFriends(res.data);
                 }
             

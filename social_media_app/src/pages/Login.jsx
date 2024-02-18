@@ -19,6 +19,7 @@ const Login=()=>{
 
     const handleChange =(e)=>{
            setUserDetails((prev)=>({...prev,[e.target.name]:e.target.value}));
+    
     }
 
     const handleClick=async(e)=>{

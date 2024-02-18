@@ -6,6 +6,8 @@ import { AuthContext } from "../context/authContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Home = ()=>{
 
 
@@ -27,7 +29,7 @@ const Home = ()=>{
     const getPost = async()=>{
         try{
             setPosts([]);
-            const post = await axios.post("http://localhost:3001/api/posts/",{userID : currentUser.user_id},{
+            const post = await axios.post(process.env.REACT_APP_BACKEND_URL+"api/posts/",{userID : currentUser.user_id},{
                 withCredentials:true
             });
             setPosts(post.data);
@@ -66,7 +68,7 @@ const Home = ()=>{
             form.append("content",content);
             form.append("user_id",currentUser.user_id);
 
-            const uploadPost = await axios.post("http://localhost:3001/api/posts/add",form,{
+            const uploadPost = await axios.post(process.env.REACT_APP_BACKEND_URL+"api/posts/add",form,{
                 withCredentials:true
             }); 
             const data = uploadPost.data;

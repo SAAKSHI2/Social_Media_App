@@ -9,6 +9,7 @@ import axios from "axios";
 import { AuthContext } from "../context/authContext";
 import moment from "moment";
 
+
 const Posts = (userInfo)=>{
         const [totalLikes,setTotalLikes] = useState([]);
         const [commentsOpen,setCommentsOpen] = useState(false);
@@ -19,7 +20,7 @@ const Posts = (userInfo)=>{
 
         const getLikes = async()=>{
           try{
-            const res = await axios.get("http://localhost:3001/api/likes?post_id="+userInfo.post_id,{
+            const res = await axios.get(process.env.REACT_APP_BACKEND_URL+"api/likes?post_id="+userInfo.post_id,{
               withCredentials:true
             });
 
@@ -38,7 +39,7 @@ const Posts = (userInfo)=>{
         const likeOrUnlike= async(liked)=>{
              if(liked){
                   try{
-                    const res = await axios.post("http://localhost:3001/api/likes",{user_id:currentUser.user_id,post_id:userInfo.post_id},{
+                    const res = await axios.post(process.env.REACT_APP_BACKEND_URL+"api/likes",{user_id:currentUser.user_id,post_id:userInfo.post_id},{
                       withCredentials:true
                     });
                     setTotalLikes((prev)=>[...prev,currentUser.user_id]);
@@ -49,7 +50,7 @@ const Posts = (userInfo)=>{
               console.log("entered unlike")
 
                   try{
-                    const res = await axios.delete("http://localhost:3001/api/likes",{user_id:currentUser.user_id,post_id:userInfo.post_id},{
+                    const res = await axios.delete(process.env.REACT_APP_BACKEND_URL+"api/likes",{user_id:currentUser.user_id,post_id:userInfo.post_id},{
                       withCredentials:true
                     });
                     setTotalLikes((prev)=>(prev!=currentUser.user_id));

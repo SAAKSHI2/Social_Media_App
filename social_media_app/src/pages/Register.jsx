@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
+
 const Register=()=>{
 
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Register=()=>{
         e.preventDefault();
        try{
 
-        await axios.post("http://localhost:3001/api/auth/register",userDetails,{
+        await axios.post(process.env.REACT_APP_BACKEND_URL+"api/auth/register",userDetails,{
             withCredentials:true
         });
         navigate("/");

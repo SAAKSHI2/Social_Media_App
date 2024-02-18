@@ -8,6 +8,7 @@ import { AuthContext } from '../context/authContext';
 import { useContext, useState } from 'react';
 import axios from 'axios';
 
+
 const Navbar = ()=>{
     const {currentUser} = useContext(AuthContext);
     const [searchFriend,setSearchFriend] = useState("");
@@ -16,7 +17,7 @@ const Navbar = ()=>{
     const handleLogout=async()=>{
 
         try{
-           const res= await axios.post("http://localhost:3001/api/auth/logout",null,
+           const res= await axios.post(process.env.REACT_APP_BACKEND_URL+"api/auth/logout",null,
             {
                 withCredentials:true
             }
@@ -33,7 +34,7 @@ const Navbar = ()=>{
          if(e.key==="Enter"){
             try{
 
-                const res=await axios.post("http://localhost:3001/api/users/findUserID",{username:searchFriend});
+                const res=await axios.post(process.env.REACT_APP_BACKEND_URL+"api/users/findUserID",{username:searchFriend});
                 if(res.data==null){
                     console.log("user not found",res.data);
                     alert("user not found")
