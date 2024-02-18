@@ -1,9 +1,7 @@
 import dataBase from "../connect.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 export const login=async(req,res)=>{
     const q = "Select * from users where username = $1";
@@ -22,9 +20,10 @@ export const login=async(req,res)=>{
 
 
             const token = jwt.sign({user_id:otherData.user_id,password:password},process.env.SECRET_KEY);
-
             res.cookie("accessToken",token,{
                 httpOnly:true,
+                sameSite: process.env.SAME_SITE,
+                secure: process.env.SECURE,
             }).status(200).json(otherData);
               
         } else{
@@ -32,6 +31,7 @@ export const login=async(req,res)=>{
         }
 
     } catch(err){
+        console.log(err);
         res.status(500).json(err.message);
     }
 
